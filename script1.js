@@ -3,7 +3,8 @@ const function_1 = function(){
     const v_scr2 = window.innerHeight;
     const scene2 = new THREE.Scene();
     const camera2 = new THREE.PerspectiveCamera(120, h_scr2/v_scr2, 0.1, 1000);
-    camera2.position.z = 10; // (0,0,z)에서 (0,0,0)을 보고있는 것
+    camera2.position.z = 10;
+    camera2.lookAt(0,0,0);  
     
     const renderer2 = new THREE.WebGLRenderer({canvas: HelloCanvas1}); 
     renderer2.setSize( h_scr2, v_scr2 ); 
