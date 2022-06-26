@@ -41,17 +41,17 @@
             <p>
 			<script src="js/three.js"></script>
 		    <canvas id="HelloCanvas"></canvas>
-			<script src="pointlightshadow2.js"></script>	
+			<script src="script2.js"></script>	
             </p>
             <p>
                 위의 렌더링에서는 광원의 위치만 변경하고 있다. 광원의 위치에 따라 그림자가 생성되는 것을 확인할 수 있다.
                 그런데 자세히 보면 빛이 중앙으로 올 때, 구체의 크기보다 그림자가 큰 것을 확인할 수 있다.
-                이것은 광원이 pointlight이기 때문이며, 물체와 광원과의 거리에 따라 그림자의 크기가 달라질 것이다.
+                이것은 광원이 점광원이기 때문이며, 물체와 광원과의 거리에 따라 그림자의 크기가 달라질 것이다.
                 한번 광원의 위치를 점차 구체로 부터 멀어지게 해볼까?
             </p>
             <p>
 			    <canvas id="HelloCanvas2"></canvas>
-			    <script src="pointlightshadow3.js"></script>	
+			    <script src="script3.js"></script>	
             </p>
             <h2>
                 property 첫번째 : camera
@@ -65,7 +65,7 @@
             </p>
             <p>
                 <canvas id="HelloCanvas4"></canvas>
-			    <script src="pointlightshadow4.js"></script>	
+			    <script src="script4.js"></script>	
             </p>
             <p>
 			    default값은 near : 0.5, far : 500 이다.
@@ -105,18 +105,18 @@
             <h4>128</h4>
             <p>
                 <canvas id="HelloCanvas5"></canvas>
-			    <script src="pointlightshadow5.js"></script>	
+			    <script src="script5.js"></script>	
             </p>           
             <h4>1024</h4>
             <p>
                 <canvas id="HelloCanvas6"></canvas>
-			    <script src="pointlightshadow6.js"></script>	
+			    <script src="script6.js"></script>	
             </p>     
             <h2>
                 property 세번째 : radius
             </h2>
             <p>
-                그림자에 blur처리를 할 수 있게된다. blur처리를 통해 원래는 pointlight 특성상 그림자의 경계가 진하게, 뚜렷하게 나타나 어색한 느낌을 받기도 하는데,
+                그림자에 blur처리를 할 수 있게된다. blur처리를 통해 원래는 점광원 특성상 그림자의 경계가 진하게, 뚜렷하게 나타나 어색한 느낌을 받기도 하는데,
                 그 느낌을 지워줄 수 있다.
             </p>
             <p>
@@ -130,14 +130,14 @@
             </h4>
             <p>
                 <canvas id="HelloCanvas7"></canvas>
-			    <script src="pointlightshadow7.js"></script>	
+			    <script src="script7.js"></script>	
             </p> 
             <h4>
                 값을 키워주면 그림자를 통해 생동감을 줄 수 있다. 100으로 값을 바꿔보자 | 색깔은 열정의 색 빨강으로 바꿔보자 :)
             </h4>
             <p>
                 <canvas id="HelloCanvas8"></canvas>
-			    <script src="pointlightshadow8.js"></script>	
+			    <script src="script8.js"></script>	
             </p> 
 	</body>
 </html>
