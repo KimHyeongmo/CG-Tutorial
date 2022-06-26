@@ -1,0 +1,143 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>PointLight Shadow - Hngmo.Kim</title>
+		<style>body { margin: 0; }</style>
+	</head>
+	<body>
+		<div>
+            <h4>
+                우선 그림자를 드리우기 위한 기본 작업이 필요하다. 각각의 변수명은 절대적인 것이 아니다. 자신이 만든 변수 이름을 사용하면 된다.
+            </h4>
+            <p>
+                renderer에서 shadow의 사용을 활성화 해주는 코드
+            </p>
+            <p>
+                <code>renderer.shadowMap.enabled = true;</code>
+            </p>
+            <p>
+                그림자를 발생시키는 빛에 대해 castShadow를 활성화 시켜야 한다.
+            </p>
+            <p>
+                <code>light.castShadow = true;</code>
+            </p>
+            <p>
+                그림자를 발생시키는 물체에 대해 castShadow를 활성화 시켜야 한다.
+            </p>
+            <p>
+                <code>object.castShadow = true;</code>
+            </p>
+            <p>
+                발생한 그림자를 받아 표현될 물체에 대해 receiveShadow를 활성화 시켜야 한다.
+            </p>
+            <p>
+                <code>object.receiveShadow = true;</code>
+            </p>
+            <p>
+            </p>
+            <h4>
+                각각은 default값이 false이기 때문에 true로 값을 바꿔주어야 한다.
+            </h4>
+            <p>
+			<script src="js/three.js"></script>
+		    <canvas id="HelloCanvas"></canvas>
+			<script src="pointlightshadow2.js"></script>	
+            </p>
+            <p>
+                위의 렌더링에서는 광원의 위치만 변경하고 있다. 광원의 위치에 따라 그림자가 생성되는 것을 확인할 수 있다.
+                그런데 자세히 보면 빛이 중앙으로 올 때, 구체의 크기보다 그림자가 큰 것을 확인할 수 있다.
+                이것은 광원이 pointlight이기 때문이며, 물체와 광원과의 거리에 따라 그림자의 크기가 달라질 것이다.
+                한번 광원의 위치를 점차 구체로 부터 멀어지게 해볼까?
+            </p>
+            <p>
+			    <canvas id="HelloCanvas2"></canvas>
+			    <script src="pointlightshadow3.js"></script>	
+            </p>
+            <h2>
+                property 첫번째 : camera
+            </h2>
+            <p>
+                처음 렌더링 예제에서 perspective camera와 비슷한 것이 움직이는 것을 보지 않았는가?
+                그렇다. three.js에서 pointlight은 그림자를 드리울 떄 마치 perspective camera인 것 처럼 드리운다.
+                즉 near, far 값을 조정하여 그림자를 표현할 범위를 지정할 수 있다
+                중요한 것은 그림자다! 그림자를 표현할 범위이다.
+                그러면 near값을 키워 그림자를 없애보도록 하겠다.
+            </p>
+            <p>
+                <canvas id="HelloCanvas4"></canvas>
+			    <script src="pointlightshadow4.js"></script>	
+            </p>
+            <p>
+			    default값은 near : 0.5, far : 500 이다.
+            </p>
+            <p>
+                <code>light2.shadow.camera.near = 20;</code>
+            </p>
+            <p>
+                near를 뒷면 너머로 보냈더니 그림자가 드리워지지 않는다. 하지만 빛은 정상적으로 구체를 비치며, 명암이 형성된다.
+                코드에서도 추측할 수 있듯이 그림자에 대한 적용이다.
+            </p>
+            <p>
+                <code>const helper = new THREE.CameraHelper( light2.shadow.camera );
+                    scene2.add( helper );
+                </code>
+            </p>
+            <p>
+                이상의 코드를 적용시키면 그림자에 대한 perspective camera 를 띄울 수 있게된다.
+            </p>
+            <h2>
+                property 두번째 : mapSize
+            </h2>
+            <p>
+                렌더링된 그림자들의 테두리를 잘 보면 매끄럽지 않다는 것을 확인할 수 있다.
+                이 때 mapsize값을 수정시킴으로써 매끈한 상태, 혹은 더욱 매끄럽지 않은 상태를 만들 수 있다.
+                섬세할 수록 연산 속도는 느려지니 적절히 사용하도록 하자.
+            </p>
+            <p>
+			    default값은 width,height : 512 이다.
+            </p>
+            <p>
+                <code>light2.shadow.mapSize.width = </code>
+            </p>
+            <p>
+                <code>light2.shadow.mapSize.height = </code>
+            </p>
+            <h4>128</h4>
+            <p>
+                <canvas id="HelloCanvas5"></canvas>
+			    <script src="pointlightshadow5.js"></script>	
+            </p>           
+            <h4>1024</h4>
+            <p>
+                <canvas id="HelloCanvas6"></canvas>
+			    <script src="pointlightshadow6.js"></script>	
+            </p>     
+            <h2>
+                property 세번째 : radius
+            </h2>
+            <p>
+                그림자에 blur처리를 할 수 있게된다. blur처리를 통해 원래는 pointlight 특성상 그림자의 경계가 진하게, 뚜렷하게 나타나 어색한 느낌을 받기도 하는데,
+                그 느낌을 지워줄 수 있다.
+            </p>
+            <p>
+			    default값은 radius : 1이며, 1 이상의 값을 통해 작동한다.
+            </p>
+            <p>
+                <code>light2.shadow.radius = </code>
+            </p>
+            <h4>
+                20
+            </h4>
+            <p>
+                <canvas id="HelloCanvas7"></canvas>
+			    <script src="pointlightshadow7.js"></script>	
+            </p> 
+            <h4>
+                값을 키워주면 그림자를 통해 생동감을 줄 수 있다. 100으로 값을 바꿔보자 | 색깔은 열정의 색 빨강으로 바꿔보자 :)
+            </h4>
+            <p>
+                <canvas id="HelloCanvas8"></canvas>
+			    <script src="pointlightshadow8.js"></script>	
+            </p> 
+	</body>
+</html>

@@ -1,0 +1,69 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>PointLight Shadow - Hngmo.Kim</title>
+		<style>body { margin: 0; }</style>
+	</head>
+	<body>
+		<div>
+			<script src="js/three.js"></script>
+			<p>
+				<h2>
+					본 문서는 그래픽스 조명의 종류중 PointLight에 의해
+					발생하는 그림자(PointLight Shadow)에 대해 three.js에서 어떻게 활용할
+					것인지 학습하는 것을 목표로 한다.
+				</h2>
+				<h3>
+					대부분의 예제 케이스에 대하여 git에 함께 첨부된 js파일 순서에
+					맞추어 확인해 보는 것으로 학습에 도움이 될것이다.
+				</h3>
+			</p>
+			<p>
+				<img src="img/0.png">
+			</p>
+			<p>
+				우선 PointLight에 대해 간단히 되짚어 보고자 한다.
+				PointLight는 한국어로 pointlight이라고도 불린다.
+			</p>
+			<p>
+				빛을 발하는 근원이 기하학적으로 차원이 없는 한 점으로 되어있는 광원을 의미한다.
+			</p>
+			<p>
+				위의 그림과 같이 점을 중심으로 빛이 뻗어 나가게 되는 형태이다.
+			</p>
+			<p>
+				<canvas id="HelloCanvas0"></canvas>
+				<script src="pointlightshadow0.js"></script>	
+			</p>
+			<p>
+				위의 렌더링 결과를 보아라. 중심 좌표에 PointLight를 두었을 때, 뒷편의 면에 빛이 어떻게 도달하는지를 나타낸다.
+				중심부는 밝지만 주변부로 갈수록 어두워진다.
+				이는 pointlight으로 부터 나온 빛이 면에 도달할 때, 면의 주변부로 갈수록 단위면적당 빛의 수가 감소하기 때문이다.
+			</p>
+			<p>
+				<canvas id="HelloCanvas1"></canvas>
+				<script src="pointlightshadow1.js"></script>	
+			</p>
+			<p>
+				위는 중앙의 pointlight을 두고, 주위로 8개의 물체를 두었을 때 이다.
+			</p>
+			<h2>
+				그럼 지금부터 threejs.org의 document에 작성된 LightShadow중 쉽게, 눈에띄게 활용할 수 있는 요소에 대하여 pointlight의 관점에서 살펴보도록 하겠다.
+			</h2>
+			<h3>
+				예제코드의 이해를 위해서는 geometry, transform, camera, pointlight에 대한 three.js 코드 이해가 선행되어야 한다.
+			</h3>
+			<p>
+				각각의 기능에 대해 값을 수정해 가며 그 기능을 어떻게 활용할 수 있는지를 중심으로 보겠다.
+			</p>
+			<h1>
+				<a href="second.html" target = "_self">다음으로</a>
+			</h1>
+			<h3>
+				<p>
+					three.js : PointLightShadow - Kim Hyeongmo
+				</p>
+			</h3>
+		</div>
+	</body>
+</html>
